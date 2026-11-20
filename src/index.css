@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0d0d0d;
+  --color-ink-soft: #131018;
+  --color-surface: #16121f;
+  --color-violet-950: #1a0a2e;
+  --color-violet-900: #2b0f4f;
+  --color-violet-800: #3d1670;
+  --color-violet-700: #4b0082;
+  --color-violet-600: #6a11cb;
+  --color-violet-500: #8b2fe0;
+  --color-lilac-400: #a78bfa;
+  --color-lilac-300: #c4b5fd;
+  --color-lilac-200: #e3d9ff;
+  --color-mist: #b9b3c9;
+  --color-paper: #f5f3ff;
+
+  --font-display: 'Space Grotesk', 'Sora', sans-serif;
+  --font-body: 'Sora', ui-sans-serif, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 11s ease-in-out infinite;
+  --animate-spin-slow: spin 18s linear infinite;
+  --animate-pulse-glow: pulseGlow 3.2s ease-in-out infinite;
+  --animate-marquee: marquee 26s linear infinite;
+  --animate-blob: blob 14s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-22px) translateX(10px); }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: .55; filter: blur(60px); }
+  50% { opacity: .9; filter: blur(80px); }
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes blob {
+  0%, 100% { border-radius: 42% 58% 65% 35% / 45% 40% 60% 55%; }
+  33% { border-radius: 62% 38% 45% 55% / 55% 65% 35% 45%; }
+  66% { border-radius: 40% 60% 55% 45% / 35% 45% 55% 65%; }
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--color-violet-600); color: #fff; }
+
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: var(--color-ink); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-violet-700), var(--color-violet-500));
+  border-radius: 999px;
+}
+
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+.text-gradient {
+  background: linear-gradient(100deg, #e3d9ff 0%, #c4b5fd 25%, #8b2fe0 60%, #4b0082 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: linear-gradient(160deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015));
+  border: 1px solid rgba(196,181,253,0.14);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.glass-strong {
+  background: linear-gradient(160deg, rgba(255,255,255,0.09), rgba(255,255,255,0.025));
+  border: 1px solid rgba(196,181,253,0.22);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.glow-ring {
+  box-shadow: 0 0 0 1px rgba(196,181,253,0.12), 0 20px 60px -20px rgba(107,17,203,0.55);
+}
+
+.btn-glow {
+  box-shadow: 0 0 22px rgba(139,47,224,0.45), 0 0 0 1px rgba(196,181,253,0.25) inset;
+}
+
+.section-eyebrow { letter-spacing: 0.32em; }
+
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.light body { background-color: #f6f4fb; color: #211a35; }
+.light .glass {
+  background: linear-gradient(160deg, rgba(75,0,130,0.05), rgba(75,0,130,0.02));
+  border: 1px solid rgba(75,0,130,0.14);
+}
+.light .glass-strong {
+  background: linear-gradient(160deg, rgba(75,0,130,0.08), rgba(75,0,130,0.02));
+  border: 1px solid rgba(75,0,130,0.18);
+}
